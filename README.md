@@ -26,9 +26,15 @@ $ tree
 ├── 0100-dpdk-install.sh                   # a script to install dpdk deps (experimental)
 ├── 0100-netplan-bridge-config.yaml        # a sample config to bridge an interface using netplan
 ├── 0200-gtp-kernel-module.md              # a list of steps to compile the gtp kernel module
-└── README.md                              # this file :)
+├── README.md                              # this file :)
+└── static
+    └── wireshark.png
 
-0 directories, 16 files
+1 directory, 18 files
 ```
 
+## Test
 
+A ping test shows that the LADN IP is reachable from the GTPGW side where we have the UE IP address configured on the loopback.
+
+![Ping wireshark trace](./static/wireshark.png)
