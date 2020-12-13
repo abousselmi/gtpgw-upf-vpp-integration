@@ -14,7 +14,6 @@ source ./env-config.sh
 
 function log {
     echo -e "$(date +%F-%T) | $(hostname) | INFO | $1"
-    sleep 1
 }
 
 function print_test_msg {
@@ -30,9 +29,11 @@ function print_test_msg {
 function start {
     log "create gtp device: $GTP_DEV"
     $GTP_TOOLS_PATH/gtp-link add $GTP_DEV &
+    log "wait 1s for gtp interface to be ready"
+    sleep 1
 
     log "set gtp device mtu to 1500"
-    ifconfig $GTP_DEV mtu 1500 up
+    ip link set $GTP_DEV mtu 1500
 
     log "create gtp tunnel endpoint"
     $GTP_TOOLS_PATH/gtp-tunnel add $GTP_DEV v1 $TEID_IN $TEID_OUT $LLB_IP $UPF_GTPU_TEP_IP
