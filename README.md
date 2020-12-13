@@ -10,7 +10,7 @@ A set of scripts to configure:
 ```console
 $ tree 
 .
-├── 0001-env-config.sh                     # network configurations (mainly)
+├── env-config.sh                     # network configurations (mainly)
 ├── 0001-vtep-gtpgw-setup.sh               # to create a VxLAN tunnel endpoint on the GTPGW host
 ├── 0001-vtep-upf-setup.sh                 # to create a VTEP on the UPF host
 ├── 0002-access-gtpgw-setup.sh             # to create the GTPU tunnel device and configure UL

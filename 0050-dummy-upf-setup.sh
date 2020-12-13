@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ] ; then
 fi
 
 ## Configuration (Playing UPF)
-source ./0001-env-config.sh
+source ./env-config.sh
 
 ## Logger
 function log {

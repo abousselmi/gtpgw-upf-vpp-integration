@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ] ; then
 fi
 
 ## Configuration (RAN N3 endpoint emulator)
-source ./0001-env-config.sh
+source ./env-config.sh
 
 function log {
     echo -e "$(date +%F-%T) | $(hostname) | INFO | $1"
