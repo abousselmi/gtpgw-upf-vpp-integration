@@ -49,6 +49,9 @@ function add {
     ip link set $UPF_N62_HOST_DEV up
     ip link set $UPF_N62_VETH_DEV up
     ip a add $UPF_N62_VETH_CIDR dev $UPF_N62_VETH_DEV
+
+    log "enable kernel ipv4 forwarding (needed to connect GTPGW to VPP N3)"
+    sysctl net.ipv4.ip_forward=1
 }
 
 function delete {
@@ -58,6 +61,9 @@ function delete {
     $IP_LINK_DEL $UPF_N4_HOST_DEV
     $IP_LINK_DEL $UPF_N61_HOST_DEV
     $IP_LINK_DEL $UPF_N62_HOST_DEV
+    
+    log "disable kernel ipv4 forwarding"
+    sysctl net.ipv4.ip_forward=0
 }
 
 if [ "$1" = "add" ]; then
