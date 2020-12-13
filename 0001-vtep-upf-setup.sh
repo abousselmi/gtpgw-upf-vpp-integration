@@ -24,7 +24,7 @@ function print_test {
 
 function upf_endpoint_up {
     log "create the vxlan device ($UPF_VTEP_DEV)"
-    ip link add $UPF_VTEP_DEV type vxlan id 42 dev $GTPGW_DEV dstport 4789
+    ip link add $UPF_VTEP_DEV type vxlan id 42 dev $UPF_DEV dstport 4789
 
     log "update forwarding table"
     bridge fdb append to 00:00:00:00:00:00 dst $GTPGW_IP dev $UPF_VTEP_DEV
