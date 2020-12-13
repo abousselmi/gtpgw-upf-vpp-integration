@@ -18,23 +18,23 @@ function log {
 }
 
 function add {
-    log "add ue route via n6: $UPF_N62_HOST_IP"
+    log "add route to UE ($UE_CIDR) via n6-sec ($UPF_N62_HOST_IP)"
     ip route add $UE_CIDR via $UPF_N62_HOST_IP
 }
 
 function delete {
-    log "delete ue route via n6: $UPF_N62_HOST_IP"
+    log "delete UE route via n6-sec ($UPF_N62_HOST_IP)"
     ip route del $UE_CIDR via $UPF_N62_HOST_IP
 }
 
 if [ "$1" = "add" ]; then
     add
-elif [ "$1" = "delete" ]; then
+elif [ "$1" = "del" ]; then
     delete
 else
     echo "Add/delete UE route via N6"
     echo ""
-    echo "  Usage: $0 <add|delete>"
+    echo "  Usage: $0 <add|del>"
     echo ""
 fi
 

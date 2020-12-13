@@ -23,16 +23,16 @@ function print_test {
 }
 
 function upf_endpoint_up {
-    log "create the vxlan device"
+    log "create the vxlan device ($UPF_VTEP_DEV)"
     ip link add $UPF_VTEP_DEV type vxlan id 42 dev $GTPGW_DEV dstport 4789
 
     log "update forwarding table"
     bridge fdb append to 00:00:00:00:00:00 dst $GTPGW_IP dev $UPF_VTEP_DEV
 
-    log "configure ip address on the device"
+    log "add ip address ($UPF_VTEP_CIDR) to device ($UPF_VTEP_DEV)"
     ip addr add $UPF_VTEP_CIDR dev $UPF_VTEP_DEV
 
-    log "set the vxlan device UP"
+    log "set the vxlan device ($UPF_VTEP_DEV) UP"
     ip link set up dev $UPF_VTEP_DEV
 
     log "done"
@@ -43,10 +43,10 @@ function upf_endpoint_up {
 function upf_endpoint_down {
     log "cleanup start"
 
-    log "set vxlan device DOWN"
+    log "set vxlan device ($UPF_VTEP_DEV) DOWN"
     ip link set down dev $UPF_VTEP_DEV
 
-    log "delete vxlan device"
+    log "delete vxlan device ($UPF_VTEP_DEV)"
     ip link del $UPF_VTEP_DEV
 
     log "cleanup finished"
@@ -54,12 +54,12 @@ function upf_endpoint_down {
 
 if [ "$1" = "add" ]; then
     upf_endpoint_up
-elif [ "$1" = "delete" ]; then
+elif [ "$1" = "del" ]; then
     upf_endpoint_down
 else
     echo "This creates a vxlan endpoint on upf side"
     echo ""
-    echo "  Usage: $0 <add|delete>"
+    echo "  Usage: $0 <add|del>"
     echo ""
 fi
 

@@ -14,7 +14,6 @@ source ./env-config.sh
 
 function log {
     echo -e "$(date +%F-%T) | $(hostname) | INFO | $1"
-    sleep 1
 }
 
 function add {
@@ -29,12 +28,12 @@ function delete {
 
 if [ "$1" = "add" ]; then
     add
-elif [ "$1" = "delete" ]; then
+elif [ "$1" = "del" ]; then
     delete
 else
     echo "Add UE IP address to loopback"
     echo ""
-    echo "  Usage: $0 <add|delete>"
+    echo "  Usage: $0 <add|del>"
     echo ""
 fi
 

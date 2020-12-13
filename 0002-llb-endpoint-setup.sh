@@ -18,23 +18,23 @@ function log {
 }
 
 function add {
-    log "add llb ip address to loopback iface: $LLB_CIDR"
+    log "add llb ip address ($LLB_CIDR) to loopback iface"
     ip addr add $LLB_CIDR dev lo
 }
 
 function delete {
-    log "delete loopback config"
+    log "delete loopback config ($LLB_CIDR)"
     ip addr del $LLB_CIDR dev lo
 }
 
 if [ "$1" = "add" ]; then
     add
-elif [ "$1" = "delete" ]; then
+elif [ "$1" = "del" ]; then
     delete
 else
     echo "Add LLB IP to looback"
     echo ""
-    echo "  Usage: $0 <add|delete>"
+    echo "  Usage: $0 <add|del>"
     echo ""
 fi
 
