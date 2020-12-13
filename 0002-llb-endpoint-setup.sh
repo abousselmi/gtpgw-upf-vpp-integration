@@ -15,7 +15,6 @@ source ./0001-env-config.sh
 ## Logger
 function log {
     echo -e "$(date +%F-%T) | $(hostname) | INFO | $1"
-    sleep 1
 }
 
 function add {
