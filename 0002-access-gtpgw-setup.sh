@@ -35,7 +35,7 @@ function start {
     ifconfig $GTP_DEV mtu 1500 up
 
     log "create gtp tunnel endpoint"
-    $GTP_TOOLS_PATH/gtp-tunnel add $GTP_DEV v1 $TEID_IN $TEID_OUT $LLB_IP $UPF_VTEP_IP
+    $GTP_TOOLS_PATH/gtp-tunnel add $GTP_DEV v1 $TEID_IN $TEID_OUT $LLB_IP $UPF_GTPU_TEP_IP
     log "$($GTP_TOOLS_PATH/gtp-tunnel list)"
 
     log "configure llb route using gtp device"
