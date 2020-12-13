@@ -18,15 +18,13 @@ function log {
 }
 
 function add {
-    log "add ue route via n6"
-    ip route add $UE_CIDR via $UPF_N61_HOST_IP
-    log "done"
+    log "add ue route via n6: $UPF_N62_HOST_IP"
+    ip route add $UE_CIDR via $UPF_N62_HOST_IP
 }
 
 function delete {
-    log "delete ue route via n6"
-    ip route add $UE_CIDR via $UPF_N61_HOST_IP
-    log "done"
+    log "delete ue route via n6: $UPF_N62_HOST_IP"
+    ip route del $UE_CIDR via $UPF_N62_HOST_IP
 }
 
 if [ "$1" = "add" ]; then
