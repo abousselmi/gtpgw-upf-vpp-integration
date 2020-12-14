@@ -19,6 +19,15 @@ UPF_VTEP_CIDR="$UPF_VTEP_IP/24"
 UPF_DEV="enp0s8"
 UPF_VTEP_DEV="vxlan0"
 
+# Using 192.168.3.0/24 for the AP might be
+# confusing. It could have been another subnet
+# but that will need another VTEP on the GTPGW
+# which is something i don't want to do. Why ? 
+# because i'm lazy..
+AP_VTEP_IP="192.168.3.50"
+AP_VTEP_CIDR="$AP_VTEP_IP/24"
+AP_DEV=wlx888279170da7
+AP_VTEP_DEV="vxlan0"
 
 ################ gtp-gw config #################
 GTP_DEV="gtp0"
